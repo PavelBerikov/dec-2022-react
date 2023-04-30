@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Navigate, Route, Routes} from "react-router-dom";
+import MainLayout from "./Loyaout/MainLayout";
+import PostPage from "./Pages/PostPage";
+import CommentPage from "./Pages/CommentPage";
+import CatDogPage from "./Pages/CatDogPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route index element={<Navigate to={'posts'}/>}/>
+                <Route path={'posts'} element={<PostPage/>}/>
+                <Route path={'comments'} element={<CommentPage/>}/>
+                <Route path={'cats_dogs'} element={<CatDogPage/>}/>
+            </Route>
+        </Routes>
+    );
+};
 
 export default App;
